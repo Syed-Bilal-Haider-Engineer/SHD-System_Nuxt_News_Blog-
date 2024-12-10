@@ -8,8 +8,17 @@
         <span class="text-3xl font-bold">News Blog</span>
       </a>
       <ul class="flex gap-6 ml-auto text-xl font-bold capitalize">
+        <NuxtLink to="/"
+        class="text-gray-800 font-semibold">
+          Home
+        </NuxtLink>
         <li>
-          <a href="">Home</a>
+          <NuxtLink
+            to="/contact"
+            class="text-gray-800 font-semibold"
+            >
+              contact us
+          </NuxtLink>
         </li>
       </ul>
     </nav>

@@ -59,6 +59,15 @@ watch(
 
 <template>
   <main>
+    <div
+      v-if="loading"
+      class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50"
+    >
+      <div class="flex items-center space-x-2">
+        <span class="w-6 h-6 border-4 border-t-transparent border-white rounded-full animate-spin"></span>
+        <p class="text-white text-lg">Loading...</p>
+      </div>
+    </div>
     <section class="py-20 container">
       <h2 class="text-3xl lg:text-5xl mb-6">Latest News Headlines</h2>
       <p class="text-lg lg:text-xl mb-8">
@@ -71,9 +80,6 @@ watch(
           placeholder="Search news..."
           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-      </div>
-      <div v-if="loading">
-        Loading...
       </div>
       <div
         v-if="!errorOccured"
@@ -99,7 +105,7 @@ watch(
             <div
               class="text-lg lg:text-xl font-normal text-gray-600 mb-4 mt-auto"
             >
-              <span
+              <p
                 >{{ news.description.substring(0, 100) }}
                 <NuxtLink
                   :to="`/news/${news.id}`"
@@ -108,7 +114,7 @@ watch(
                   Read More
                 </NuxtLink>
                 ...
-              </span>
+              </p>
             </div>
           </div>
         </div>
@@ -188,5 +194,14 @@ watch(
 .card-button:hover {
   background-color: #f5a623;
   cursor: pointer;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 </style>
